@@ -79,7 +79,7 @@ def game(deaths, survives):
     # Investiage route - death 
     else: 
         print("You summon your courage and walk towards the shelf. You see the book, high on a tower of dusty door stoppers, taunting you with its unassuming paper-ness. What will you do?\n")
-        choice = valNum(1, 2, "1 - Grab it\n2 - Accio!!\n3 - Wait")
+        choice = valNum(1, 2, "1 - Grab it\n2 - Accio!!")
 
         # Grab - die
         if choice == 1:
@@ -100,6 +100,7 @@ def game(deaths, survives):
             print("- GAME END! -\nYou're not Harry Potter. Too embarassed to continue, you go home... and survive! Congrats!")
             survives += 1
             return deaths, survives 
+        
 deaths, survives = 0, 0
 
 play = 1 
