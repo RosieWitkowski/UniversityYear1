@@ -42,7 +42,7 @@ def game(deaths, survives):
             print("- GAME END! -\nYou slammed into a concentrate wall and died! Congrats...?")
             deaths += 1 
             return deaths, survives 
-        # Right - die
+        # Right - mixed
         else:
             print("Well done, you manage to flee down the far right hall and scamper into an open classroom. What will you do next?\n")
             choice = valNum(1, 2, "1 - Hide\n2 - Fight\n")
@@ -76,7 +76,7 @@ def game(deaths, survives):
                 print("- GAME END! -\nYou survived! Congrats...?")
                 survives += 1 
                 return deaths, survives 
-    # Investiage route - death 
+    # Investiage route - mixed 
     else: 
         print("You summon your courage and walk towards the shelf. You see the book, high on a tower of dusty door stoppers, taunting you with its unassuming paper-ness. What will you do?\n")
         choice = valNum(1, 2, "1 - Grab it\n2 - Accio!!")
