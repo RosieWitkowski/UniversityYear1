@@ -1,0 +1,26 @@
+START
+    FUNCTION odd_or_even(num):
+        IF num % 2 == 0:
+            PRINT "Even"
+        ELSE:
+            PRINT "Odd"
+    END FUNCTION 
+END
+
+See exercise book for flowchart
+
+Text-based flowchart layout:
+[Start]
+    |
+    v
+[Input num]
+    |
+    v
+[Is num % 2 == 0?] -- > Yes --> [Print "Even"]
+    |
+    No
+    v
+[Print "Odd"]
+    |
+    v
+    [End]
