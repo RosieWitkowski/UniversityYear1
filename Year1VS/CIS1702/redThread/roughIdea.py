@@ -9,10 +9,9 @@ def main():
     while play:
         points = level(points, modifier)
         
-        print("Play? Y/N")
         choice = 'B'
         while not choice.isalpha or (choice.upper()[0] not in ['Y', 'N']):
-            choice = input().upper()[0]
+            choice = input("Play? (Enter Y/N)").upper()[0]
         if choice == 'N':
             play = False
         
@@ -20,6 +19,15 @@ def main():
         
     print(f"= POINTS =\n{points}")
     
+    hs = highscore(points)
+    if hs:
+        print("NEW HIGHSCORE")
+    else:
+        print(f"{hs - points} from highscore! Keep trying!")
+
+def highscore(points):
+    highest = 4
+    return True if points >= highest else highest
 
 def level(points, modifier):
     # Start every round with a duck
@@ -89,3 +97,8 @@ def shiny_pig():
 if __name__ == "__main__":
     main()
 
+# Assertion testing 
+print("Running tests...")
+assert highscore(10) == True 
+assert highscore(1) == 4
+print("Tests successfull.")
