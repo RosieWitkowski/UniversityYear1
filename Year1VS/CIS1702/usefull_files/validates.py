@@ -1,13 +1,8 @@
-# 
+# Confirms a given input is an integar, will run until condition is met
 def validate_int(msg):
     num = 'A'
     while not num.isnumeric():
-        while True:
-            try:
-                num = input(msg)
-                break
-            except ValueError:
-                print("Please enter an integar.")
+        num = input(msg)
     return int(num)
 
 # Repeatedly asks for an input, until an option is provided that's within the given options
