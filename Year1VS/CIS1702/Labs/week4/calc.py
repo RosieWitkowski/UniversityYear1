@@ -8,7 +8,7 @@ def multiply(num1, num2):
     return num1 * num2
 
 def divide(num1, num2):
-    return num1 / num2 
+    return num1 / num2 if num2 != 0 else "Cannot divide by zero"
 
 def mod(num1, num2):
     return num1 % num2 
