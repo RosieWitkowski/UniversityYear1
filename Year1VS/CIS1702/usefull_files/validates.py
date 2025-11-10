@@ -7,7 +7,7 @@ def validate_int(msg):
 
 # Repeatedly asks for an input, until an option is provided that's within the given options
 def validate_str(msg, options):
-    choice = ''
+    choice = options[0] + 'adjhkajhds' # Ensures not in options
     length = len(options[0]) # How far into input str to compare to options (for alliterative options)
     while choice not in options:
         choice = input(msg)[:length].upper()
