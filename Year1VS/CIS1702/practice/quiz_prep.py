@@ -54,17 +54,17 @@ for x in range(height):
         print("#", end="")
     print()
 
-# Nested loop - print a right-angle triangle
+# Loops cont. - print a right-angle triangle
 height = int(input("Height: "))
 print("= Triangle = ")
 for x in range(1, height+1):
     print("#" * x)
 
-# Nested loop - print a pyramid 
+# Loop - print a pyramid 
 print(" = Pyramid = ")
 width = 1
 for x in range(height):
-    print(" " * (height-x), end="")
+    print(" " * (height-x-1), end="")
     print("#" * width)
     width += 2
 
@@ -108,7 +108,7 @@ print(is_even(24)) # Expected output: True
 
 # Simple reusable fns
 def valid_str_option(options, msg):
-    choice = options[0].upper() + 'AHKJSHKFKJ'
+    choice = options[0].upper() + 'AHKJSHKFKJ' # Ensures not one of the options
     max_len = len(options[0]) # For words that start with the same few letters
     while choice not in options: 
         choice = input(msg)[:max_len].upper()
