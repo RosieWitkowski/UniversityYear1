@@ -94,10 +94,10 @@ for x in range(2):
     print_meow()
 
 # Return values
-def is_even(num):
+def is_even(num): # Paramater num
     return True if num % 2 == 0 else False
  
-even = is_even(4)
+even = is_even(4) # Argument 4
 print(f"Is 4 even? Ans: {even}")
 
 print(f"Is 9 even? Ans: {is_even(9)}")
