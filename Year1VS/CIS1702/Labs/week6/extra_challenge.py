@@ -12,6 +12,14 @@ def main():
     enrol_student('s54321', 'CIS1000')
     enrol_student('s54321', 'CIS2000') # Succeeds due to updated modules
 
+    print("-- Student Record --")
+    for student_id, completed_modules in students.items():
+        print(f"ID: {student_id} | Modules: ", end="")
+        for module in completed_modules:
+            print(module, end=" ")
+        print()
+        
+
 # Modules codes and their required prerequisites
 modules = {
     'CIS1702': [],
