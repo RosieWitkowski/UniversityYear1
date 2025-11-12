@@ -14,7 +14,19 @@ class wizard():
           V     *    
         #####  /
     """)
+        
+    def sad():
+        print(r""" 
+          *
+        /   \
+        v   v
+          |
+          ^
+        ##### \
+               *
+        """)
     
 odd_wizard = wizard 
 wizard.enter()
 wizard.happy()
+wizard.sad()
