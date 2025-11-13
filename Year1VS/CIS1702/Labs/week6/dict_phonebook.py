@@ -5,8 +5,9 @@ phonebook["Bob"] = "555-5678"
 
 # Searching
 name_search = input("Name: ").capitalize()
-if name_search in phonebook:
-    print(f"Number: {phonebook[name_search]}")
+number = phonebook.get(name_search)
+if number:
+    print(f"Number: {number}")
 else:
     print("Name not found.")
 
