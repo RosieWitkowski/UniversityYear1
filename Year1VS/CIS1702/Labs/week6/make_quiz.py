@@ -14,7 +14,7 @@ for i in range(len(questions)):
     else:
         print("Incorrect.")
 
-print(f"Score: {score}")
+print(f"Score: {score}/{len(questions)}")
 
 # Version 2 - using dictionary and for
 print("-- Dict ver --")
@@ -35,4 +35,4 @@ for i, question in enumerate(quiz):
     else:
         print("Incorrect!")
 
-print(f"Score: {score}")
+print(f"Score: {score}/{len(questions)}")
