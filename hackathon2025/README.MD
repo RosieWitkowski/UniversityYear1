@@ -2,7 +2,7 @@
 Submission for the Edge Hill University 2025 Hackathon  
   
 **Constraints**: 1 hour, no external libraries  
-**Theme**: Text-based adventure game 
+**Theme**: Text-based adventure game   
 **Language**: Python  
   
 **Placed**: 1st   
@@ -13,6 +13,7 @@ An escape room where the user must complete the wizard's 3 challenges to finish.
 ## Reflection  
 
 With more time, it would be best practice to add a try-except block in a validate_int() function, to ensure incorrect input will not give an error when attempting to typecast for puzzle 2. Additionally, considering the minimum and maximum amount of points possible to win is calculable, a 'ranking' could be added to the end with a custom message (e.g. < 50 points - F, 500-600 points- A, > 600 points - A*). Furthermore, the text_box printing was repeated twice, it would have been better to make this a function and potentially used the sleep effect in more areas, possibly with a list of different SLEEP_INTERVAL lengths to apply depending on the context of the text block. Finally, with enough time to do so, the answers() function could be more detailed/user-friendly. 
+
 
 
 
