@@ -6,6 +6,7 @@ answers = ['GRIAN', 'GREEN', 'IRON']
 score = 0 
 
 for i in range(len(questions)):
+    print(f"Question {i+1}: ", end="")
     ans = input(f"{questions[i]} ")
     if ans.upper().split()[0] == answers[i]:
         score += 1
@@ -13,9 +14,10 @@ for i in range(len(questions)):
     else:
         print("Incorrect.")
 
-print(score)
+print(f"Score: {score}")
 
 # Version 2 - using dictionary and for
+print("-- Dict ver --")
 quiz = {
     'Who made the Life Series on YouTube?' : 'GRIAN',
     'What colour is a creeper?' : 'GREEN',
@@ -24,7 +26,8 @@ quiz = {
 
 score = 0
 
-for question in quiz:
+for i, question in enumerate(quiz):
+    print(f"Question {i+1}: ", end="")
     ans = input(f"{question} ")
     if ans.upper().split()[0] == quiz[question]:
         score += 1
@@ -32,4 +35,4 @@ for question in quiz:
     else:
         print("Incorrect!")
 
-print(score)
+print(f"Score: {score}")
