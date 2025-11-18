@@ -1,0 +1,4 @@
+~ Entry 1
+hello world
+~ Day 2
+hello bat
