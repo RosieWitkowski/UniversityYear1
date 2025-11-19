@@ -15,6 +15,7 @@ with open("log.txt", "w") as f:
         # Reading from a .txt file
 with open("log.txt", "r") as f:
     lines = f.readlines() # lines = ["First line\n", "Second line\n", ...]
+    print(lines)
 # You often need to strip the \n
 clean_lines = [line.strip() for line in lines]
 print(clean_lines) # ['First line', 'Second line', 'Third line']
@@ -28,12 +29,18 @@ with open("grades.csv", "w", newline='') as f:
     writer = csv.writer(f)
     for student, scores in gradebook.items():
         writer.writerow([student] + scores) # e.g., ['Bob', 85, 90]
+
+with open('grades.csv', 'a', newline='') as f:
+    writer = csv.writer(f)
+    writer.writerow(['Lacy'] + [84, 79, 83])
+
 # Reading from a .csv file
 new_gradebook = {}
 with open("grades.csv", "r") as f:
     reader = csv.reader(f)
     for row in reader:
         # row is always a list of STRINGS: e.g., ['Bob', '85', '90']
+        # row[0] = name, row[1:] = scores --> dict --> name = grades
         new_gradebook[row[0]] = [int(s) for s in row[1:]]
 print(new_gradebook)
 
