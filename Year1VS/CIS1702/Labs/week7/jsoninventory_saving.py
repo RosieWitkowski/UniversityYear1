@@ -54,9 +54,9 @@ def add_item(item):
 
 print("-- + Loading Inventory + --")
 inventory = load_inventory()
-if inventory == False:
-    save_inventory(starter_inventory)
-    inventory = load_inventory()
+if not inventory:
+    inventory = starter_inventory
+    save_inventory(inventory)
 print_inventory()
 
 print("-- + Inventory After Losing Item + --")
