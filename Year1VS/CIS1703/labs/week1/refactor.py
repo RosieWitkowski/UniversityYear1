@@ -104,7 +104,7 @@ def summary(values: list[float]) -> dict[str, float]:
         ValueError: if values is empty.
     """
     if not values:
-        raise ValueError("Values cannot be empty for summary.") from e 
+        raise ValueError("Values cannot be empty for summary.")
 
     # Sorted creates a new list as opposed to sort(), avoids mutation
     vals = sorted(values)
