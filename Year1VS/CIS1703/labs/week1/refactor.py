@@ -25,8 +25,9 @@ def main() -> None:
     """CLI entry point."""
     while True:
         try:
-            option = input("Input thorugh file (F) or command-line-interace (C)?: ")
-            if option[0].upper() == 'F':
+            option = valid_str('Input through file (F) or command-line-interface (C)?: ', ['F', 'C'])
+    
+            if option =='F':
                 path = input("File path: ")
                 data = read_text_file(path)
             else:
@@ -36,17 +37,21 @@ def main() -> None:
             stats = summary(values)
             print(format_summary(stats))   
 
-            option = 'F'
-            while option not in ['Y', 'N']:
-                option = input("Calculate again? (y/n) ")
-                option = option[0].upper()
-                if option == 'N':
-                    return 
-                elif option == 'Y':
-                    break
+            option = valid_str("Calculate again? (y/n) ", ['Y', 'N'])
+            if option == 'N':
+                return 
 
         except ValueError as e:
             print(f"Error: {e}") 
+
+def valid_str(txt, options):
+    option = f"{options[0]}fsajhfsak"
+
+    while option not in options:
+        option = input(txt)
+        option = option[0].upper()
+    
+    return option
 
 def read_text_file(path: str) -> str:
     try:
