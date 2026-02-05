@@ -29,10 +29,6 @@ def get_non_empty_string(prompt: str, max_attempts: int) -> str:
     while attempts < max_attempts:
         attempts += 1
         user_input = safe_input(prompt)
-        if not user_input:
-            print("Error: input cannot be empty")
-            print(f"Attempt {attempts}/{max_attempts}")
-            continue 
         user_input = user_input.strip()
         if user_input == "":
             print("Error: input cannot be empty")
@@ -62,10 +58,6 @@ def get_valid_integer(prompt: str, min_value: int, max_value: int, max_attempts:
     while attempts < max_attempts:
         attempts += 1
         num = safe_input(prompt)
-        if not num:
-            print("Error: input is required.")
-            print(f"Attempt {attempts}/{max_attempts}")
-            continue 
         num = num.strip()
         if num == "":
             print("Error: input is required.")
@@ -74,12 +66,18 @@ def get_valid_integer(prompt: str, min_value: int, max_value: int, max_attempts:
         
         try:
             num = int(num)
-            if num >= min_value and num <= max_value:
-                return num 
-            print(f"Error: value must be between {min_value} and {max_value}")
         except ValueError:
             print("Error: please enter a valid integer")
+            print(f"Attempt {attempts}/{max_attempts}")
             continue 
+
+        if (min_value is not None and num < min_value) or (max_value is not None and num > max_value):
+            print(f"Error: value must be between {min_value} and {max_value}")
+            print(f"Attempt {attempts}/{max_attempts}")
+            continue 
+
+        return num 
+    
     print("[!] Max attempts reached, exiting program...")
     exit()
 
@@ -104,10 +102,6 @@ def get_valid_float(prompt: str, min_value: float, max_value: float, max_attempt
     while attempts < max_attempts:
         attempts += 1
         num = safe_input(prompt)
-        if num is None:
-            print("Error: input cannot be empty.")
-            print(f"Attempt {attempts}/{max_attempts}")
-            continue 
         num = num.strip()
         if num == "":
             print("Error: input cannot be empty.")
@@ -116,15 +110,17 @@ def get_valid_float(prompt: str, min_value: float, max_value: float, max_attempt
         
         try:
             num = float(num)
-            if num < min_value or num > max_value:
-                print(f"Error: input not within range {min_value} to {max_value}")
-                print(f"Attempt {attempts}/{max_attempts}")
-                continue
         except ValueError:
             print("Error: input must be numeric.")
             print(f"Attempt {attempts}/{max_attempts}")
             continue 
-        return num 
+
+        if (min_value is not None and num < min_value) or (max_value is not None and num > max_value):
+            print(f"Error: input must be within range {min_value} to {max_value}.")
+            print(f"Attempt {attempts}/{max_attempts}")
+            continue 
+        
+        return num
     
     print("Max attempts reached, exiting program...")
     exit()
@@ -144,7 +140,7 @@ def safe_input(prompt: str) -> str:
         return input(prompt)
     except(KeyboardInterrupt, EOFError): 
         print("[!] User cancelled input.")
-        return None 
+        return "" 
 
 # Testing
 """name = get_non_empty_string("Name: ")
@@ -154,13 +150,14 @@ age = get_valid_integer("Age: ", 0, 123)
 print(f"Understood, you are {age} years old.")"""
 
 # Part E - Advanced Input: Restriced Choices
-def get_choice(prompt: str, choices: list[str], max_attempts: int) -> str:
+def get_choice(prompt: str, choices: list[str], max_attempts: int, choices_str: str) -> str:
     """Accepts only values in choice (case-insensitive), preserving the original format
     
     Args:
         prompt(str): text to be prompted to user 
         choices(list[str]): list of acceptable options
         max_attempts (int): maximum allowed attempts before loop stops 
+        choices_str(str): string formatting for choices
         
     Returns:
         string: originaly formatted option that is within the allowed choices
@@ -173,10 +170,11 @@ def get_choice(prompt: str, choices: list[str], max_attempts: int) -> str:
             print("Error: Input is required.")
             print(f"Attempt {attempts}/{max_attempts}")
             continue 
-        if choice.title() in choices:
-            return choice 
+        choice = choice.title()
+        if choice in choices:
+            return choice
         else:
-            print("Error: Please chose a valid option from the choices.")
+            print(f"Error: Please chose a valid option from {choices_str}")
             print(f"Attempt {attempts}/{max_attempts}")
     print("[!] Max attempts reached, exiting program...")
     exit()
@@ -195,9 +193,12 @@ def main():
     points = get_valid_float("Points (0-500.25)", 0, 500.25, default_attempts)
 
     roles = ['Admin', 'User', 'Guest']
-    role = get_choice(f"Role ({roles}): ", roles, default_attempts)
+    choices_str = "/".join(roles)
+    role = get_choice(f"Role ({choices_str}): ", roles, default_attempts, choices_str)
 
-    stay_signed = get_choice(f"Stayed signed in on this device? (y/n): ", ['Yes', 'No', 'Y', 'N'], default_attempts)
+    yn = ['Yes', 'No', 'Y', 'N']
+    choices_str = "/".join(yn)
+    stay_signed = get_choice(f"Stayed signed in on this device? (y/n): ", ['Yes', 'No', 'Y', 'N'], default_attempts, choices_str)
 
     print(f"== {role.upper()} LOGIN ==\nWelcome, user {user}!\nWe have verified your role ({role}) and age ({age}), signing you in...")
     if stay_signed[0].upper() == 'Y':
