@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Car",
+        "date": "1-5-2024",
+        "category": "vehicle",
+        "amount": 32,
+        "cost": 12000.0
+    },
+    {
+        "name": "Apple",
+        "date": "18-3-2003",
+        "category": "food",
+        "amount": 21,
+        "cost": 0.5
+    },
+    {
+        "name": "keyboard",
+        "date": "8-2-2026",
+        "category": "other",
+        "amount": 12,
+        "cost": 50.0
+    },
+    {
+        "name": "dress",
+        "date": "1-2-1999",
+        "category": "other",
+        "amount": 15,
+        "cost": 27.0
+    }
+]
