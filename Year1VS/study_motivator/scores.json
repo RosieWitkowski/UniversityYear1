@@ -1,0 +1,16 @@
+{
+    "total points": 0,
+    "current_points": 0,
+    "rolls": 5,
+    "misses": 3,
+    "small prizes won": 1,
+    "medium prizes won": 1,
+    "big prizes won": 0,
+    "prizes won": [
+        [],
+        [
+            "buy pens",
+            "play game"
+        ]
+    ]
+}
