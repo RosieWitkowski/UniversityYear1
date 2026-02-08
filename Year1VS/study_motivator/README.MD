@@ -1,2 +1,6 @@
-A quick and small fun project to help encourage studying (and other activites, such as chores) in a game-ifed way.
-Doing tasks earns a predtermined amount of points, with a small random bonus applied. These can be exchanged for tickets, used to spin a random prize generator (split into easy - most likely -, medium, hard).
+# About 
+A fun, small project to help gamify productivity (and practice some basic programming techniques, such as input validation, file management and importing helper files).
+Add/remove points, use those points to purchase tickets, and exchange tickets for spins on the prize wheel! 
+
+
+
