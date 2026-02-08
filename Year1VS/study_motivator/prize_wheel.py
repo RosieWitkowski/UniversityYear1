@@ -1,4 +1,5 @@
 from random import randint
+import input_handler as valid_input
 """
 Based on simulations, chances are (very roughly):
     1/2 - 2/3 : Small prize hit
@@ -38,13 +39,26 @@ def roll_prize(miss: int, small: int, medium: int, big: int) -> tuple[int, int, 
                 return small, medium, big, prize
     return small, medium, big, None 
 
-def wheel() -> tuple[int, int, int, int, int, list[str]]:
+def wheel(tickets: int, points: int) -> tuple[int, int, int, int, int, int, list[str]]:
+    yn = ['y', 'yes', 're-roll', 'r', 'n', 'no', 'exit', 'cancel']
+    ans = valid_input.get_choice("Roll the wheel? (y/n)? ", yn)
+    if ans in yn[4:]:
+            print("Cancelling... ")
+            return tickets, 0, 0, 0, 0, 0, None
+    
     small, medium, big = 0, 0, 0
     rolls, ttl_miss = 0, 0
     prizes = []
-    while True:
+
+    if tickets <= 0:
+        print("Please purchase a ticket or tickets first!")
+        print(f"Your balance: {tickets} Tickets, Points {points}")
+        return tickets, 0, 0, 0, 0, 0, None
+
+    while tickets > 0:
     # while rolls < 101:
         rolls += 1
+        tickets -= 1
 
         miss = 0
         while miss < 3:
@@ -58,17 +72,17 @@ def wheel() -> tuple[int, int, int, int, int, list[str]]:
             print("Miss!")
             ttl_miss += 1
 
-        try:
-            ans = input("Re-roll?(y/n) ").strip()
-        except (KeyboardInterrupt, EOFError):
-            print(f"Rolls: {rolls} | Misses: {ttl_miss} | Scores: small {small} | medium: {medium} | big: {big}")
-            print("Cancelled input, exiting...")
-            exit()
+        if tickets > 0:
+            ans = valid_input.get_choice("Re-roll (y/n)? ", yn)
+            if ans in yn[4:]:
+                print("Exiting... ")
+                print(f"Rolls: {rolls} | Misses: {ttl_miss} | Scores: small {small} | medium: {medium} | big: {big}")
+                print("Thank you for playing!")
+                return tickets, rolls, ttl_miss, small, medium, big, ", ".join(prizes)
+            # print(f"Rolls: {rolls} | Misses: {ttl_miss} | Scores: small {small} | medium: {medium} | big: {big}")
+            print("Re-rolling...")
 
-        if ans == "" or ans in ['n', 'no', 'exit', 'cancell']:
-            print(f"Rolls: {rolls} | Misses: {ttl_miss} | Scores: small {small} | medium: {medium} | big: {big}")
-            print("Thank you for playing!")
-            return rolls, ttl_miss, small, medium, big, prizes
-
-        # print(f"Rolls: {rolls} | Misses: {ttl_miss} | Scores: small {small} | medium: {medium} | big: {big}")
-        print("Re-rolling...")
+    print("You ran out of tickets!")
+    print(f"Rolls: {rolls} | Misses: {ttl_miss} | Scores: small {small} | medium: {medium} | big: {big}")
+    print("Thank you for playing!")
+    return tickets, rolls, ttl_miss, small, medium, big, ", ".join(prizes)
