@@ -6,7 +6,7 @@ Based on simulations, chances are (very roughly):
     1/3 : Miss 
     1/10 - 1/5 : Medium prize hit
     0/100 - 2/100 Big prize hit 
-
+(To maintain these probabilities, keep the number of each type the same else un-common and re-run for quick estimation)
 """
 
 easy_prizes = ['snack', 'play game', 'watch tv']
