@@ -1,50 +1,15 @@
 from random import randint
 import input_handler as valid_input
-"""
-Based on simulations, chances are (very roughly):
-    1/2 - 2/3 : Small prize hit
-    1/3 : Miss 
-    1/10 - 1/5 : Medium prize hit
-    0/100 - 2/100 Big prize hit 
-(To maintain these probabilities, keep the number of each type the same else un-commont and re-run for quick estimation)
-"""
 
-easy_prizes = ['snack', 'play game', 'watch tv']
-medium_prizes = ['buy pens', 'buy game', 'buy book', 'buy small lego']
-hard_prizes = ['buy hoodie', 'buy lego']
+titles = ['Noob', 'Sprout', 'Determined', 'Successfull', 'Winner', 'Champion',]
 
-WIN = 1
-
-def roll_prize(miss: int, small: int, medium: int, big: int) -> tuple[int, int, int, str]:
-    if miss == 0:
-        for prize in easy_prizes:
-            chance = randint(1, 5)
-            if chance == WIN:
-                print(f"!! YOU WON !! [Small] Prize: {prize}")
-                small += 1
-                return small, medium, big, prize
-    elif miss == 1:
-        for prize in medium_prizes:
-            chance = randint(1, 10)
-            if chance == WIN:
-                print(f"!! YOU WON !! [Medium] Prize: {prize}")
-                medium += 1
-                return small, medium, big, prize
-    elif miss == 2:
-        for prize in hard_prizes:
-            chance = randint(1,100)
-            if chance == WIN:
-                print(f"!! YOU WON !! [Big] Prize: {prize}")
-                big += 1
-                return small, medium, big, prize
-    return small, medium, big, None 
-
-def wheel(tickets: int, points: int) -> tuple[int, int, int, int, int, int, list[str]]:
+def wheel(tickets: int, points: int, title: str) -> tuple[int, int, int, int, int, int, list[str]]:
     yn = ['y', 'yes', 're-roll', 'r', 'n', 'no', 'exit', 'cancel']
     ans = valid_input.get_choice("Roll the wheel? (y/n)? ", yn)
     if ans in yn[4:]:
             print("Cancelling... ")
-            return tickets, 0, 0, 0, 0, 0, None
+            return tickets, 0, 0, 0, 0, 0, None, None 
+    
     
     small, medium, big = 0, 0, 0
     rolls, ttl_miss = 0, 0
@@ -53,24 +18,52 @@ def wheel(tickets: int, points: int) -> tuple[int, int, int, int, int, int, list
     if tickets <= 0:
         print("Please purchase a ticket or tickets first!")
         print(f"Your balance: {tickets} Tickets, Points {points}")
-        return tickets, 0, 0, 0, 0, 0, None
+        return tickets, 0, 0, 0, 0, 0, None, None 
+
+    new_title = None 
 
     while tickets > 0:
-    # while rolls < 101:
+        if new_title == None:
+            title_index = titles.index(title)
+        else:
+            title_index = titles.index(new_title)
+        print(f"Tickets: {tickets}")
+        
+        # Probabilities
+        small_prize = randint(1, 5)
+        title_prize = randint(1,10)
+        medium_prize = randint(1, 10)
+        big_prize = randint(1, 100)
+
+        randomizer = randint(1, 3)
+
         rolls += 1
         tickets -= 1
 
-        miss = 0
-        while miss < 3:
-            small, medium, big, prize = roll_prize(miss, small, medium, big)
-            miss += 1
-            if prize is not None:
-                prizes.append(prize)
-                break 
-
-        if miss == 3:
+        if randomizer == small_prize:
+            prize = valid_input.get_string(f"!! YOU WON !! Enter name of [SMALL] prize here: ").title()
+            small += 1
+        elif randomizer == title_prize:
+            if title_index != len(titles) - 1:
+                new_title = titles[title_index + 1]
+                titles.append(new_title)
+                print(f"!! YOU WON !! You found new title '{new_title}'!")
+            else:
+                print("!! YOU WON!! Title already owned!")
+            prize = 'New Title'
+        elif randomizer == medium_prize:
+            prize = valid_input.get_string(f"!! YOU WON !! Enter name of [MEDIUM] prize here: ").title()
+            medium += 1
+        elif randomizer == big_prize:
+            prize = valid_input.get_string(f"!! YOU WON !! Enter name of [BIG] prize here: ").title()
+            big += 1
+        else:
             print("Miss!")
+            prize = None 
             ttl_miss += 1
+        
+        if prize is not None:
+            prizes.append(prize)
 
         if tickets > 0:
             ans = valid_input.get_choice("Re-roll (y/n)? ", yn)
@@ -78,11 +71,11 @@ def wheel(tickets: int, points: int) -> tuple[int, int, int, int, int, int, list
                 print("Exiting... ")
                 print(f"Rolls: {rolls} | Misses: {ttl_miss} | Scores: small {small} | medium: {medium} | big: {big}")
                 print("Thank you for playing!")
-                return tickets, rolls, ttl_miss, small, medium, big, ", ".join(prizes)
+                return tickets, rolls, ttl_miss, small, medium, big, ", ".join(prizes), titles
             # print(f"Rolls: {rolls} | Misses: {ttl_miss} | Scores: small {small} | medium: {medium} | big: {big}")
             print("Re-rolling...")
 
     print("You ran out of tickets!")
     print(f"Rolls: {rolls} | Misses: {ttl_miss} | Scores: small {small} | medium: {medium} | big: {big}")
     print("Thank you for playing!")
-    return tickets, rolls, ttl_miss, small, medium, big, ", ".join(prizes)
+    return tickets, rolls, ttl_miss, small, medium, big, ", ".join(prizes), titles
