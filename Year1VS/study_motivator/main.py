@@ -6,6 +6,7 @@ def main():
     if stats is None:
         points = 0
         stats = ({
+            'title': 'Noob',
             'total points': 0,
             'current points': 0,
             'spins': 0,
@@ -18,13 +19,15 @@ def main():
     else:
         try:
             points = stats['total points']
+            title = stats['title']
         except KeyError:
-            print("Error: Unexpected indexing at stats[points], exiting... ")
+            print("Error: Unexpected indexing at stats initialization, exiting... ")
             exit()
     
     rolls, ttl_miss, small, medium, big, prizes = wheel()
-
+    
     try:
+        stats['title'] = title 
         stats['total points'] += points 
         stats['current points'] = points
         stats['spins'] += rolls
