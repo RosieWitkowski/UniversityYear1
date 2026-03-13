@@ -2,7 +2,7 @@ import tkinter as tk
 
 root = tk.Tk()
 root.title("Student Grades Tracker")
-root.geometry("750x750")
+root.geometry("350x350")
 root.config(bg="#70eaf3")
 
 students = []
@@ -24,7 +24,7 @@ def add_student():
         return grade_label.config(text="Error: Grade must be between 0 and 100")
         
     students.append((name, student_grade))
-    display.config(text=students)
+    display.config(text=" | ".join([f"Student: {student[0]} Grade: {student[1]}" for student in students]))
 
     # Re-config labels in case of previous incorrect input
     name_label.config(text="Student Name")
