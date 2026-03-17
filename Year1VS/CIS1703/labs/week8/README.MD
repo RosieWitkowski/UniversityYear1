@@ -1,0 +1,1 @@
+This week mostly on paper notes from guidebook, see Programming 2 notebook
