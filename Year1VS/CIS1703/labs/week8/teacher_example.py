@@ -1,3 +1,5 @@
+"""Teacher's example of basic GUI, binding to entry, common entry arguments"""
+
 import tkinter as tk
 def calculate_bmi():
     """Calculate BMI from user input."""
