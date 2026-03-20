@@ -27,7 +27,7 @@ def multiply():
 root = tk.Tk()
 root.title("Calculator")
 root.geometry("400x300")
-root.config(bg="#6c6ce3")
+root.config(bg="#8686f0")
 
 container = tk.Frame(root)
 container.pack()
