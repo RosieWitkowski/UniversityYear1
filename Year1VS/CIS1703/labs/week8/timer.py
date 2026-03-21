@@ -1,6 +1,6 @@
 # Quick experiment, not from seminar
 import tkinter as tk 
-from time import sleep
+from tkinter import messagebox
 
 root = tk.Tk()
 root.title("Quick Clock Test")
@@ -20,8 +20,9 @@ def countdown():
 
 
 def close():
-    root.destroy()
-    root.after_cancel(timer_ID)
+    if messagebox.askyesno("Confirmation", "Are you sure you wish to exit?"):
+        root.destroy()
+        root.after_cancel(timer_ID)
     
 
 time = 0
