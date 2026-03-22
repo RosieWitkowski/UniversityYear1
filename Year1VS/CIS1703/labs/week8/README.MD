@@ -1,1 +1,1 @@
-This week mostly on paper notes from guidebook, see Programming 2 notebook
+Using tkinter to make GUIs, considering HCI Nielsen's 10 heuristics and integration of classes
