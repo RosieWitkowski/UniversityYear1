@@ -1,23 +1,24 @@
 import tkinter as tk
 def add_item():
-item = entry.get().strip()
-if item:
-listbox.insert(tk.END, item)
-entry.delete(0, tk.END)
-status_var.set(f"Added: {item}")
+    item = entry.get().strip()
+    if item:
+        listbox.insert(tk.END, item)
+        entry.delete(0, tk.END)
+        status_var.set(f"Added: {item}")
+
 def remove_item():
-selection = listbox.curselection()
-if selection:
-item = listbox.get(selection[0])
-listbox.delete(selection[0])
-status_var.set(f"Removed: {item}")
-else:
-status_var.set("No item selected.")
-Page 21
-CIS1703 — Programming 2: GUI with tkinterPart 1: Tutorials
+    selection = listbox.curselection()
+    if selection:
+        item = listbox.get(selection[0])
+        listbox.delete(selection[0])
+        status_var.set(f"Removed: {item}")
+    else:
+        status_var.set("No item selected.")
+
 def clear_all():
-listbox.delete(0, tk.END)
-status_var.set("All items cleared.")
+    listbox.delete(0, tk.END)
+    status_var.set("All items cleared.")
+
 root = tk.Tk()
 root.title("Listbox Tutorial")
 root.geometry("400x400")
@@ -46,10 +47,8 @@ scrollbar.config(command=listbox.yview)
 # Pre-populate with sample data
 for item in ["Python", "Java", "C++", "JavaScript", "Ruby",
 "Go", "Rust", "Swift", "Kotlin", "TypeScript"]:
-listbox.insert(tk.END, item)
+    listbox.insert(tk.END, item)
 # Action buttons
-Page 22
-CIS1703 — Programming 2: GUI with tkinterPart 1: Tutorials
 btn_frame = tk.Frame(root)
 btn_frame.pack(pady=5)
 tk.Button(btn_frame, text="Remove Selected",
