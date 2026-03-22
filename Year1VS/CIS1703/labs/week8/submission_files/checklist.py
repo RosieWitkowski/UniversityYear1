@@ -20,8 +20,6 @@ class Checklist():
         self.root.title("Checklist")
         self.root.geometry("800x500")
         self.root.config(bg="#6591ff")
-    
-        self.tasks = []
 
         tk.Label(root, font=("Courier New", 20), text="Checklist", bg="Black", fg="White").pack(pady=5, fill=tk.X)
         
@@ -79,7 +77,6 @@ class Checklist():
             self.status_bar.config(bg="Red", text="Please enter a name for your new task, before attempting to Add.'")
             return
         task = self.name_entry.get()
-        self.tasks.append(task)
         self.listbox.insert(tk.END,task)
         self.name_entry.delete(0, tk.END) # Clear entry box for convenience
         self.status_bar.config(bg="Green", text="New task added!")
@@ -94,7 +91,7 @@ class Checklist():
             return 
         if messagebox.askyesno("Confirm", "Are you sure you want to delete?"):
             self.added-=1 
-            if self.listbox.get(selection).startswith('[DONE]'):
+            if self.listbox.get(selection[0]).startswith('[DONE]'):
                 self.completed -= 1
             self.update_progress()
             self.listbox.delete(selection[0])
