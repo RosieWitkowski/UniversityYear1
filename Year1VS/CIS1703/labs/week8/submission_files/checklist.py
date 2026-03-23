@@ -83,6 +83,7 @@ class Checklist():
 
         self.added += 1 
         self.update_progress()
+        self.name_entry.focus_set()
     
     def delete_task(self):
         selection = self.listbox.curselection()
