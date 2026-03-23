@@ -59,7 +59,7 @@ class Checklist():
         self.status_bar = tk.Label(text="", bg="Grey")
         self.status_bar.pack(fill=tk.X, pady=5)
         self.completed, self.added = 0, 0
-        self.completed_bar = tk.Label(text="/ Completed", bg="Green")
+        self.completed_bar = tk.Label(text="0/0 Completed", bg="Green")
         self.completed_bar.pack(fill=tk.X)
     
     def update_progress(self):
@@ -100,19 +100,19 @@ class Checklist():
 
     def complete_task(self):
         selection = self.listbox.curselection()
-        if selection:
-            item = f"{self.listbox.get(selection)}"
-            if item.startswith('[DONE]'):
-                self.listbox.delete(selection)
-                self.listbox.insert(selection, item[6:])
-                self.completed -= 1
-            else:
-                self.listbox.delete(selection)
-                self.listbox.insert(selection, '[DONE]' + item)
-                self.completed += 1
-            self.update_progress()
-        else:
+        if not selection:
             self.status_bar.config(bg="Red", text="Please select a task to mark as complete.")
+            return False
+        item = f"{self.listbox.get(selection)}"
+        if item.startswith('[DONE]'):
+            self.listbox.delete(selection)
+            self.listbox.insert(selection, item[6:])
+            self.completed -= 1
+        else:
+            self.listbox.delete(selection)
+            self.listbox.insert(selection, '[DONE]' + item)
+            self.completed += 1
+        self.update_progress()
 
     def clear_task(self):
         if not self.listbox:
