@@ -73,10 +73,10 @@ class Checklist():
             self.root.destroy()
 
     def add_task(self):
-        if not self.name_entry.get():
+        task = self.name_entry.get().strip()
+        if not task:
             self.status_bar.config(bg="Red", text="Please enter a name for your new task, before attempting to Add.'")
             return
-        task = self.name_entry.get()
         self.listbox.insert(tk.END,task)
         self.name_entry.delete(0, tk.END) # Clear entry box for convenience
         self.status_bar.config(bg="Green", text="New task added!")
