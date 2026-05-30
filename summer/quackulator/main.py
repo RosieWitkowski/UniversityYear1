@@ -7,7 +7,7 @@ root.geometry("640x480")
 
 border = {'highlightbackground': 'black', 'highlightthickness': '1'}
 theme1= {'bg': "#6167A3", 'fg': "#FFFFFF", 'font': ('Courier New', 28), **border}
-theme2= {'bg': "#FFB799", 'fg': "#000000", 'font': ('Courier New', 18), **border}
+theme2= {'bg': "#FF9319", 'fg': "#000000", 'font': ('Courier New', 18), **border}
 theme3 = {'bg': "#B7B5FF", 'fg': "#000000", 'font': ('Courier New', 24), **border}
 theme4 = {'bg': "#9E9DDD", 'fg': "#000000", 'font': ('Courier New', 24), **border}
 theme5 = {'bg': "#DDE463", 'fg': "#000000", 'font': ('Courier New', 24), **border}
@@ -26,7 +26,7 @@ output_display.grid(row=0, column=0, columnspan=4)
 # Clear and backspace
 clear_btn = tk.Button(calc_frame, **theme2, text="C")
 clear_btn.grid(row=1, column=2)
-back_btn = tk.Button(calc_frame, **theme2, text="<-")
+back_btn = tk.Button(calc_frame, **theme2, text="<-X")
 back_btn.grid(row=1, column=3, pady=10)
 
 # Numbers and functions
@@ -64,10 +64,13 @@ minus_btn = tk.Button(calc_frame, **theme4, text='-')
 minus_btn.grid(row=5, column=3, pady=10)
 
 # Row 3 (overall 6)
-duck_btn = tk.Button(calc_frame, **theme5, text='D') # Add image later
+duck_img = tk.PhotoImage(file=r'assets/duck_face.png')
+duck_btn = tk.Button(calc_frame, **theme5, image=duck_img) 
 duck_btn.grid(row=6, column=0)
 num0 = tk.Button(calc_frame, **theme3, text='0')
 num0.grid(row=6, column=1 )
+root.update()
+# print(num0.winfo_width(), num0.winfo_height())
 
 euqals_btn = tk.Button(calc_frame, **theme4, text='=')
 euqals_btn.grid(row=6, column=2)
