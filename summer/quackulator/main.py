@@ -62,6 +62,4 @@ num3.grid(row=5, column=2 )
 minus_btn = tk.Button(calc_frame, **theme4, text='-')
 minus_btn.grid(row=5, column=3 )
 
-
-
 root.mainloop()
