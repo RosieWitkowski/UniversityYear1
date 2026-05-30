@@ -10,6 +10,7 @@ theme1= {'bg': "#6167A3", 'fg': "#FFFFFF", 'font': ('Courier New', 28), **border
 theme2= {'bg': "#FFB799", 'fg': "#000000", 'font': ('Courier New', 18), **border}
 theme3 = {'bg': "#B7B5FF", 'fg': "#000000", 'font': ('Courier New', 24), **border}
 theme4 = {'bg': "#9E9DDD", 'fg': "#000000", 'font': ('Courier New', 24), **border}
+theme5 = {'bg': "#DDE463", 'fg': "#000000", 'font': ('Courier New', 24), **border}
 
 calc_border = tk.Frame(root, height=600, width=450)
 calc_border.pack(pady=5)
@@ -26,7 +27,7 @@ output_display.grid(row=0, column=0, columnspan=4)
 clear_btn = tk.Button(calc_frame, **theme2, text="C")
 clear_btn.grid(row=1, column=2)
 back_btn = tk.Button(calc_frame, **theme2, text="<-")
-back_btn.grid(row=1, column=3)
+back_btn.grid(row=1, column=3, pady=10)
 
 # Numbers and functions
 # Row 0 (overall 3)
@@ -49,7 +50,7 @@ num6 = tk.Button(calc_frame, **theme3, text='6')
 num6.grid(row=4, column=2 )
 
 multiply_btn = tk.Button(calc_frame, **theme4, text='*')
-multiply_btn.grid(row=4, column=3 )
+multiply_btn.grid(row=4, column=3, pady=10)
 
 # Row 2 (overall 5)
 num1 = tk.Button(calc_frame, **theme3, text='1')
@@ -60,6 +61,17 @@ num3 = tk.Button(calc_frame, **theme3, text='3')
 num3.grid(row=5, column=2 )
 
 minus_btn = tk.Button(calc_frame, **theme4, text='-')
-minus_btn.grid(row=5, column=3 )
+minus_btn.grid(row=5, column=3, pady=10)
+
+# Row 3 (overall 6)
+duck_btn = tk.Button(calc_frame, **theme5, text='D') # Add image later
+duck_btn.grid(row=6, column=0)
+num0 = tk.Button(calc_frame, **theme3, text='0')
+num0.grid(row=6, column=1 )
+
+euqals_btn = tk.Button(calc_frame, **theme4, text='=')
+euqals_btn.grid(row=6, column=2)
+add_btn = tk.Button(calc_frame, **theme4, text='+')
+add_btn.grid(row=6, column=3, pady=10 )
 
 root.mainloop()
