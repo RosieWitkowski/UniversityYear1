@@ -1,6 +1,5 @@
 # Quackulator
-
-<img width="400" height="400" alt="Screenshot of application (calculator with duck button)" src="https://github.com/user-attachments/assets/daa6611f-a016-4bdd-bf31-4aa16706f5aa" />
+<img width="400" height="400" alt="Screenshot 2026-06-01 015539" src="https://github.com/user-attachments/assets/79b5c54f-0ba1-4e37-b1c8-6d4ad26bfd80" />
 
 ## Goal
 Mini project to reinforce Python, specifically Tkinter, basics while exploring more specific features such as Windsound, consistent styling, eval(), etc.
