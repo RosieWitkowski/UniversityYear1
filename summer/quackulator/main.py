@@ -1,7 +1,7 @@
 import tkinter as tk 
 import winsound
 
-default_txt = 'Press duck to hear answer quacked!\nBig quack = number, Small quack = zero\nBig clock chime = end of number, Small chime = decimal point)'
+default_txt = 'Press duck to hear the answer quacked!\nBig quack = number, Small quack = zero\nBig clock chime = end of number, Small chime = decimal point)'
 
 def clear():
     output_display.config(text="")
