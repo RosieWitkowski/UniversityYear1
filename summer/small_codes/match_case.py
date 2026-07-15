@@ -12,7 +12,7 @@ def check_char(character):
 
     if character == 'Mabel_P' or character == 'Dipper_P':
         print("Twin")
-    elif character in ['Wendy', 'Sous', 'Grunkle_S', 'Grunkle_F', 'PNW', 'Bill']:
+    elif character in ['Wendy', 'Sous', 'Grunkle_S', 'Grunkle_F', 'PNW', 'Bill', 'Gideon', 'Robbie']:
         print("Main character.")
     else:
         print("Other or unkown character")
@@ -23,11 +23,13 @@ def check_char(character):
     match character:
         case 'Mabel_P' | 'Dipper_P':
             print("Twin")
-        case 'Wendy' | 'Sous' | 'Grunkle_S' | 'Grunkle_F' | 'PNW' | 'Bill':
+        case 'Wendy' | 'Sous' | 'Grunkle_S' | 'Grunkle_F' | 'PNW' | 'Bill' | 'Gideon' | 'Robbie':
             print("Main character")
         case _:
             print("Other or unkown character")
 
-check_char('Mabel_P')
-check_char('Grunkle_S')
-check_char('Robbie')
+check_char('Mabel_P') # Twin
+check_char('Grunkle_S') # Main
+check_char('Gideon') # Main
+check_char('Toby_D') # Side (other/unkown)
+check_char('Asdhasjkdhasjkd') # Invalid (other/unkown)
