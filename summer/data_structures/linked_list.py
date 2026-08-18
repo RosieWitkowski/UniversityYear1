@@ -168,7 +168,7 @@ if __name__ == "__main__":
 
     print("Checking for specific results...")
     print('apple' in class_scores) # False
-    print(50 in class_scores) # True
+    print(32 in class_scores) # True
     print("Checks complete!")
 
         
