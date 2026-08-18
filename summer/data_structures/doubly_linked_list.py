@@ -59,7 +59,7 @@ class DoublyLinkedList:
         return last.value
 
 
-    # O(n) linear time
+    # O(1) constant time - better than linked 
     def append(self, value: int):
         last = self.head
         if not last:
@@ -77,6 +77,7 @@ class DoublyLinkedList:
         new_node = Node(value)
         if not self.head:
             self.head = new_node
+            self.tail = self.head 
         else:
             # Can't first make head, else will lose current head
             new_node.next = self.head
