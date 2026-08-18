@@ -7,7 +7,7 @@ class Node:
 class DoublyLinkedList:
     def __init__(self):
         self.head = None 
-        self.previous = None
+        self.tail = None
 
     # O(n) linear time
     def __repr__(self) -> str:
