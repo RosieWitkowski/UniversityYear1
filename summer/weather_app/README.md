@@ -1,5 +1,7 @@
 # Weather App
-<img width="400" height="400" alt="Screenshot 2026-06-01 015727" src="assets/thumbnail.png" />
+<img width="400" height="400" alt="Screenshot 2026-06-01 015727" src="assets/thumbnail_clear.png" />
+<img width="400" height="400" alt="Screenshot 2026-06-01 015727" src="assets/thumbnail_clouds.png" />
+<img width="400" height="400" alt="Screenshot 2026-06-01 015727" src="assets/thumbnail_rain.png" />
 
 ## Goals and About 
 To code a weather app to reinforce skills in API calling, Tkinter, GUI design and Python. Will be able to search a city, make a call to OpenWeatherMap's API, and display the returned data on temperature, time, etc. in a user-friendly format. 
@@ -9,7 +11,8 @@ To code a weather app to reinforce skills in API calling, Tkinter, GUI design an
 An API key is required to make a call to the server; my own is kept hidden in a gitignore file, meaning any outside users will need to request one. This is free and simple to do: go to https://openweathermap.org/api and press 'Get API key', once you've signed in and copied the key (it will be a long string of text with numbers and letters), you can hardcode it into the api_call.py file or make a file in the assets folder called API_key.txt, with (only) the key pasted into the document. Then you're ready to go!
 ### Usage 
 Once you have an API key connected, run main.py (python main.py) and search a city in the search bar. It is possible to differentiate a search between country/same country, such as 'London,uk', 'London, england', 'London, usa', etc. Search either by pressing Enter or pressing the magifying glass. 
-Displays city, date, time, temperature, temperature feel, min temp, max temp, sky (e.g. cloud, rain, snow), sunrise time and sunset time. Units are in local timezone and celcius. 
+Displays city, date, time, temperature, temperature feel, min temp, max temp, sky (e.g. cloud, rain, snow), sunrise time and sunset time. Units are in local timezone and celcius - can be converted to fahrenheit using the green button.
+Background adjusts to the overall weather status (i.e. rain, snow, clear). 
 
 # Expansion 
 As a student, this application is effective in developing key skills but it is worth considering steps in hypothetical large-scale deployment, that would be relevant at industry level. Here are the key points I would consider: 

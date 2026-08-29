@@ -38,6 +38,15 @@ def search():
     max_temp_label.config(text=f"High: {temp_max}⁰C")
 
     sky_status_label.config(text=f"Sky: {sky_summary}")
+    match sky_summary: 
+        case 'Clouds':
+            background.config(image=cloudy_sky)
+        case'Rain' | 'Thunderstorm':
+            background.config(image=rainy_sky)
+        case 'Snow':
+            background.config(image=snowy_sky)
+        case _:
+            background.config(image=default_sky)
 
     sunrise_label.config(text=f"☀️ Sunrise\n{sunrise}")
     sunset_label.config(text=f"🌙 Sunset\n{sunset}")
@@ -93,6 +102,10 @@ main_frame.columnconfigure(4, weight=1)
 
 # ~ BACKGROUND 
 default_sky = tk.PhotoImage(file="assets/default_sky.png")
+cloudy_sky = tk.PhotoImage(file="assets/clouds2.png")
+rainy_sky = tk.PhotoImage(file='assets/rain2.png')
+snowy_sky = tk.PhotoImage(file='assets/snow.png')
+
 background = tk.Label(main_frame, image=default_sky, **bg_theme)
 background.place(x=0, y=0, relheight=1, relwidth=1)
 
