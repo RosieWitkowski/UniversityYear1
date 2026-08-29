@@ -1,7 +1,7 @@
 # Weather App
-<img width="400" height="400" alt="Screenshot 2026-06-01 015727" src="assets/thumbnail_clear.png" />
-<img width="400" height="400" alt="Screenshot 2026-06-01 015727" src="assets/thumbnail_clouds.png" />
-<img width="400" height="400" alt="Screenshot 2026-06-01 015727" src="assets/thumbnail_rain.png" />
+<img width="400" height="400" alt="Image demonstrating weaether app application" src="assets/thumbnail_clear.png" />
+<img width="400" height="400" alt="Image demonstrating weaether app application" src="assets/thumbnail_clouds.png" />
+<img width="400" height="400" alt="Image demonstrating weaether app application" src="assets/thumbnail_rain.png" />
 
 ## Goals and About 
 To code a weather app to reinforce skills in API calling, Tkinter, GUI design and Python. Will be able to search a city, make a call to OpenWeatherMap's API, and display the returned data on temperature, time, etc. in a user-friendly format. 
