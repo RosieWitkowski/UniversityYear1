@@ -6,7 +6,7 @@ try:
     with open('assets/API_key.txt') as f:
         api_key = str(f.read().strip())
 except:
-    raise Exception("API key not found. Please go to https://openweathermap.org/api to generate one.")
+    raise Exception("API key not found. Please go to https://openweathermap.org/api to generate one.\nIf you don't know how, see the README.md file for more detailed instructions.")
 
 url = "https://api.openweathermap.org/data/2.5/weather?q={}&APPID={}"
 
@@ -27,14 +27,14 @@ def get_times(data):
     timezone = data['timezone']
     
     unix_date += timezone
-    date = datetime.fromtimestamp(int(unix_date), UTC).strftime('%Y-%m-%d %H:%M:%S')
-    date, time = date[:10], date[11:]
+    date_adjusted = datetime.fromtimestamp(int(unix_date), UTC).strftime('%Y-%m-%d %H:%M:%S')
+    date_adjusted, time = date_adjusted[:10], date_adjusted[11:]
     
     sunrise, sunset = data['sys']['sunrise'] + timezone, data['sys']['sunset'] + timezone
     sunrise = datetime.fromtimestamp(int(sunrise), UTC).strftime("%H:%M")
     sunset = datetime.fromtimestamp(int(sunset), UTC).strftime("%H:%M")
 
-    return sunrise, sunset, date, time 
+    return sunrise, sunset, date_adjusted, time 
 
 def get_weather(data):
     KELVIN = 273.15 # For conversion kelvin to celcius
@@ -44,8 +44,8 @@ def get_weather(data):
 
 
 # Testing/example usage
-data = get_data('London')
+"""data = get_data('London')
 if not data: 
     raise Exception('Data not found') # In GUI, use status bar 
 print("Weather", get_weather(data))
-print("Times", get_times(data))
+print("Times", get_times(data))"""
