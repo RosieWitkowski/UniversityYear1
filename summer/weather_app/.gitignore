@@ -1,0 +1,7 @@
+__pycache__/
+bin/ 
+assets/file_type_converter.py 
+assets/API_key.txt
+*.jpg 
+*.jpeg
+data_dump.json
