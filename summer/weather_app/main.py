@@ -18,9 +18,9 @@ def search():
     time_label.config(text=f"🕝TIME {time}")
 
     main_temp_label.config(text=f"Temperature: {main_temp}⁰C")
-    min_temp_label.config(text=f"Min: {temp_min}⁰C")
+    min_temp_label.config(text=f"Low: {temp_min}⁰C")
     temp_feels_label.config(text=f"Feels like: {temp_feel}⁰C")
-    max_temp_label.config(text=f"Max: {temp_max}⁰C")
+    max_temp_label.config(text=f"High: {temp_max}⁰C")
 
     sky_status_label.config(text=f"Sky: {sky_summary}")
 
