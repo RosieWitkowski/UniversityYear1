@@ -21,6 +21,6 @@ To focus on the areas I most wanted to develop/improve, I removed the complexity
 A useful feature could be a manual units conversion button or automatic change to Fahrenheit if in speicific countries, etc. 
 Also, the sky summary could change emojis depending on the status given (e.g. rain cloud for rains) to improve readability. 
 
-Overall, the project works exceptionally at reinforcing the desired skills and at providing an opportunity to recognise potential development features at industry standard. 
+Overall, the project achives the goal of reinforcing the desired skills and at providing an opportunity to recognise potential development features at an industry standard. 
  
 
