@@ -1,5 +1,5 @@
 # Weather App
-<img width="400" height="400" alt="Screenshot 2026-06-01 015727" src="assets/default_sky.png" />
+<img width="400" height="400" alt="Screenshot 2026-06-01 015727" src="assets/thumbnail.png" />
 
 ## Goals and About 
 To code a weather app to reinforce skills in API calling, Tkinter, GUI design and Python. Will be able to search a city, make a call to OpenWeatherMap's API, and display the returned data on temperature, time, etc. in a user-friendly format. 
@@ -17,8 +17,9 @@ As a student, this application is effective in developing key skills but it is w
 This program relies on a free-tier API subscription from OpenWeatherMap and a hidden API key, requiring users to use their own. Industry products on a large scale would require a provided (encrypted) API key and are likely to exhaust the call limit on the current tier, especially if vulnerable to DDoS attacks. Therefore, a higher tier, secure API key and preventive measures against attacks would be necessary considerations. 
 2. Further data 
 To focus on the areas I most wanted to develop/improve, I removed the complexity of displaying multiple hours/days and opted for a user-controlled refresh system. While this could be advertised as intentionally being simple/easy for the user experience, an industry standard weather app would likely develop to include more information (again, this is also limited by a free tier so additional services may be considered, at such a level). 
-3. Units conversion 
+3. Additional small features
 A useful feature could be a manual units conversion button or automatic change to Fahrenheit if in speicific countries, etc. 
+Also, the sky summary could change emojis depending on the status given (e.g. rain cloud for rains) to improve readability. 
 
 Overall, the project works exceptionally at reinforcing the desired skills and at providing an opportunity to recognise potential development features at industry standard. 
  
