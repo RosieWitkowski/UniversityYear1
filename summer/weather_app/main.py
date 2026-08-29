@@ -7,12 +7,7 @@ root.geometry("1200x700")
 root.resizable(0,0)
 root.config(bg='SkyBlue')
 
-"""sunrise_theme = {'bg': "#F8AE64"}
-day_theme = {'bg': "#9DC4DB"}
-sunset_theme = {'bg': "#F3AACA"}
-night_theme = {'bg': "#0F2031"}"""
-
-# Themes
+# ~ THEMES
 border1 = {'highlightbackground': 'black', 'highlightthickness': '4'}
 border2 = {'highlightbackground': 'grey', 'highlightthickness': '2'}
 
@@ -27,7 +22,7 @@ widget_theme2 = {'fg': "#000000", 'bg': "#6BA7BD", **border2}
 widget_theme3 = {'fg': "#000000", 'bg': "#ffffff"}
 widget_theme4 = {'fg': "#000000", 'bg': "#6BA7BD", **border1} 
 
-# Frames
+# ~ CONTAINERS
 main_frame = tk.Frame(root,width=1260, height=700)
 main_frame.pack(fill='both', expand=True, padx=20, pady=20)
 main_frame.columnconfigure(0, weight=1)
@@ -36,25 +31,12 @@ main_frame.columnconfigure(2, weight=1)
 main_frame.columnconfigure(3, weight=1)
 main_frame.columnconfigure(4, weight=1)
 
-
+# ~ BACKGROUND 
 default_sky = tk.PhotoImage(file="assets/default_sky.png")
 background = tk.Label(main_frame, image=default_sky, **bg_theme)
 background.place(x=0, y=0, relheight=1, relwidth=1)
 
-# IN ACTUAL CODE, GET SUNRISE/SUNSET FROM API_CALL
-# time = api_call.get_time(14)
-"""if time > 5:
-    if time < 7:
-        main_frame.config(**sunrise_theme)
-    elif time < 20:
-        main_frame.config(**day_theme)
-    elif time < 21:
-        main_frame.config(**sunset_theme)
-    else:
-        main_frame.config(**night_theme)
-else:
-    main_frame.config(**night_theme)"""
-
+# ~ WIDGETS
 # ROW 0 - title and search bar
 tk.Label(main_frame, text="Weather App ⛅", **font1, **widget_theme1).grid(row=0, column=0, padx=20, pady=20, sticky='nesw')
 
@@ -97,9 +79,11 @@ sunrise.grid(row=6, column=0)
 
 sunset = tk.Label(main_frame, text="🌙 Sunset \n ", **widget_theme3, **font3)
 sunset.grid(row=6, column=2)
-
-# ROW 7 - output bar 
+ 
+# ROW 7 - status bar 
 default_text = "Use the search bar at the top of the screen to find your city! Please ensure you have an API key ready (see README.md for instructions)."
 output_label = tk.Label(root, justify='center', wraplength=900,text=default_text, **widget_theme4, **font1)
 output_label.pack(pady=5)
-root.mainloop()
+
+if __name__ == "__main__":
+    root.mainloop()
