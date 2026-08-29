@@ -1,6 +1,15 @@
 import tkinter as tk 
 import api_call
 
+# ~ WINDOW 
+root = tk.Tk()
+root.title("Weather App")
+root.geometry("1200x700")
+root.resizable(0,0)
+root.config(bg='SkyBlue')
+
+main_temp_var, temp_feel_var, temp_min_var, temp_max_var = tk.IntVar(), tk.IntVar(), tk.IntVar(), tk.IntVar()
+
 def search():
     output_label.config(text="Searching... ")
     query = search_bar.get()
@@ -14,6 +23,12 @@ def search():
     sunrise, sunset, date_adjusted, time =  api_call.get_times(data)
     sky_summary, main_temp, temp_feel, temp_min, temp_max = api_call.get_weather(data)
 
+    main_temp_var.set(main_temp)
+    temp_feel_var.set(temp_feel)
+    temp_min_var.set(temp_min)
+    temp_max_var.set(temp_max)
+
+    date_label.config(text=f"📅DATE {date_adjusted}")
     city_label.config(text=f"🗺️CITY {query}")
     time_label.config(text=f"🕝TIME {time}")
 
@@ -26,12 +41,30 @@ def search():
 
     sunrise_label.config(text=f"☀️ Sunrise\n{sunrise}")
     sunset_label.config(text=f"🌙 Sunset\n{sunset}")
-# ~ WINDOW 
-root = tk.Tk()
-root.title("Weather App")
-root.geometry("1200x700")
-root.resizable(0,0)
-root.config(bg='SkyBlue')
+
+# Calls celcius to fahrenheit conversion and displays updated values
+def convert_f():
+    """main, min, feels, max = main_temp_label.cget('text'), min_temp_label.cget('text'), temp_feels_label.cget('text'), max_temp_label.cget('text')
+    main, min, feels, max = get_nums(main)
+    main_temp_label.config(text=f"Temperature: {main_temp}⁰C")
+    min_temp_label.config(text=f"Low: {temp_min}⁰C")
+    temp_feels_label.config(text=f"Feels like: {temp_feel}⁰C")
+    max_temp_label.config(text=f"High: {temp_max}⁰C")"""
+    if main_temp_var.get():
+        main_temp, temp_min, temp_feel, temp_max = formula(main_temp_var.get(), temp_min_var.get(), temp_feel_var.get(), temp_max_var.get())
+
+        main_temp_label.config(text=f"Temperature: {main_temp}⁰F")
+        min_temp_label.config(text=f"Low: {temp_min}⁰F")
+        temp_feels_label.config(text=f"Feels like: {temp_feel}⁰F")
+        max_temp_label.config(text=f"High: {temp_max}⁰F")
+    else:
+        output_label.config(text="Please make a search before attempting to convert.")
+        root.after(3000, lambda: output_label.config(text=default_text))
+
+# Converts celcius to fahrenheit
+def formula(main_temp, temp_min, temp_feel, temp_max):
+    # (0°C × 9/5) + 32 
+    return ((main_temp * 9/5) + 32), ((temp_min * 9/5) + 32), ((temp_feel * 9/5) + 32), ((temp_max * 9/5) + 32)
 
 # ~ THEMES
 border1 = {'highlightbackground': 'black', 'highlightthickness': '4'}
@@ -47,6 +80,7 @@ widget_theme1 = {'fg': "#ffffff", 'bg': "#6BA7BD", **border2}
 widget_theme2 = {'fg': "#000000", 'bg': "#6BA7BD", **border2}
 widget_theme3 = {'fg': "#000000", 'bg': "#ffffff"}
 widget_theme4 = {'fg': "#000000", 'bg': "#6BA7BD", **border1} 
+widget_theme5 = {'fg': "#000000", 'bg': "#69B46C", **border2} 
 
 # ~ CONTAINERS
 main_frame = tk.Frame(root,width=1260, height=700)
@@ -77,6 +111,9 @@ submit_btn = tk.Button(main_frame, text="🔎", **widget_theme1, **font1, comman
 submit_btn.grid(row=0, column=2, pady=20, sticky='nesw')
 
 # ROW 1 - city and time displays
+date_label = tk.Label(main_frame, text="📅DATE / / ", **widget_theme3, **font3)
+date_label.grid(row=1, column=0)
+
 city_label = tk.Label(main_frame, text='🗺️CITY Use above searchbar', **widget_theme3, **font3)
 city_label.grid(row=1, column=1)
 
@@ -108,8 +145,11 @@ sunrise_label.grid(row=6, column=0)
 
 sunset_label = tk.Label(main_frame, text="🌙 Sunset\n", **widget_theme3, **font3)
 sunset_label.grid(row=6, column=2)
+
+# ROW 7 - Unit conversion 
+tk.Button(main_frame, command=convert_f, text="PRESS TO convert to Fahrenheit -> ", **widget_theme5, **font1).grid(pady=20, row=7, column=1)
  
-# ROW 7 - status bar 
+# Status bar 
 default_text = "Use the search bar at the top of the screen to find your city! Please ensure you have a valid API key ready (see README.md for instructions)."
 output_label = tk.Label(root, justify='center', wraplength=900,text=default_text, **widget_theme4, **font1)
 output_label.pack(pady=5)
