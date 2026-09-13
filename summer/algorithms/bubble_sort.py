@@ -1,18 +1,16 @@
-list_example = [0, 5, 8, 2, 3, 7]
-counter, swaps, length = 0, 1 , len(list_example)
-
-print(f"Unsorted: {list_example}")
-
-while swaps > 0:
-    counter, swaps = 0, 0 
-    for i in range(0, length-1):
-        if list_example[i] > list_example[i+1]:
-            temp = list_example[i]
-            list_example[i] = list_example[i+1]
-            list_example[i+1] = temp 
-            swaps += 1
-
-print(f"Sorted: {list_example}")
+def bubble_sort(list_example):
+    copy_list = list_example[::]
+    swaps, length = 1, len(copy_list)
+    while swaps > 0:
+        swaps = 0
+        for i in range(0, length-1):
+            if copy_list[i] > copy_list[i+1]:
+                temp = copy_list[i]
+                copy_list[i] = copy_list[i+1]
+                copy_list[i+1] = temp 
+                swaps += 1
+    return copy_list
+    
 
 
     
