@@ -1,3 +1,4 @@
+# O(n^2), Ω(n), Space O(1)
 def bubble_sort(list_example):
     copy_list = list_example[::]
     swaps, length = 1, len(copy_list)
@@ -11,6 +12,7 @@ def bubble_sort(list_example):
                 swaps += 1
     return copy_list
 
+# O(n^2), Ω(n), Space O(1)
 def descending_bubble_sort(list_example):
     copy_list = list_example[::]
     swaps, length = 1, len(copy_list)
