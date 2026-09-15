@@ -1,3 +1,4 @@
+# Moves elements to the correct position, by comparing to previous elements (building a 'sorted' left)
 # O(n^2), Ω(n), Space O(1)
 def insertion_sort(list_example):
     copy_list = list_example[::]

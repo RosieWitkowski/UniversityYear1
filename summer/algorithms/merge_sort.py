@@ -1,3 +1,5 @@
+# Recursively halves array, sorts by comparing elements, merging back into the full array
+
 # O(nlogn), Space O(n)
 def merge_sort(arr):
     if len(arr) <= 1:

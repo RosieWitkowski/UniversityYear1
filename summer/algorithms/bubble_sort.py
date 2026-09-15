@@ -1,3 +1,5 @@
+# Compares adjacent elements, swapping where needed, so the larger items 'bubble' to the end 
+
 # O(n^2), Ω(n), Space O(1)
 def bubble_sort(list_example):
     copy_list = list_example[::]
